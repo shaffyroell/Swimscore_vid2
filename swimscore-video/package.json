@@ -1,0 +1,19 @@
+{
+  "name": "swimscore-video",
+  "version": "1.0.0",
+  "description": "SwimScore Meta Video - Male fertility health metric promotional video",
+  "scripts": {
+    "start": "remotion studio",
+    "build": "remotion render SwimScoreVideo out/video.mp4",
+    "render": "remotion render SwimScoreVideo out/video.mp4"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.414",
+    "@remotion/cli": "^4.0.414",
+    "@types/react": "^19.2.10",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "remotion": "^4.0.414",
+    "typescript": "^5.9.3"
+  }
+}
