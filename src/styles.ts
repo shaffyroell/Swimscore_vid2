@@ -1,39 +1,43 @@
-// Design Tokens for SwimScore Video
-// Minimal health-data aesthetic - no boxes, no colors
+// Design Tokens for SwimScore TikTok Video
+// Bold, high contrast, modern sans-serif
 
 export const colors = {
-  background: '#000000',
+  background: '#1a1a1f', // Deep graphite (not pure black)
   primaryText: '#ffffff',
-  mutedText: 'rgba(255, 255, 255, 0.6)',
-  deemphasizedText: 'rgba(255, 255, 255, 0.45)',
-  divider: 'rgba(255, 255, 255, 0.07)',
-  starFilled: 'rgba(255, 255, 255, 0.5)',
-  starEmpty: 'rgba(255, 255, 255, 0.15)',
-  circleStroke: 'rgba(255, 255, 255, 0.8)',
+  mutedText: 'rgba(255, 255, 255, 0.65)',
+  accent: '#2dd4bf', // Teal/aqua - ONLY for SwimScore
+  divider: 'rgba(255, 255, 255, 0.08)',
+  starFilled: 'rgba(255, 255, 255, 0.4)',
+  starEmpty: 'rgba(255, 255, 255, 0.12)',
 };
 
 export const typography = {
-  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif',
-  headerSize: 28,
-  headerWeight: 500,
-  rowLabelSize: 32,
-  rowLabelWeight: 400,
-  starSize: 20,
-  scoreSize: 64,
-  scoreSubtitleSize: 24,
-  ctaSize: 36,
+  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", system-ui, sans-serif',
+  // Hook/tension text
+  hookSize: 72,
+  hookWeight: 700,
+  // Signal rows
+  rowLabelSize: 38,
+  rowLabelWeight: 600,
+  starSize: 18,
+  // Brand
+  brandSize: 80,
+  brandSubtitleSize: 28,
+  // CTA
+  ctaSize: 48,
+  ctaWeight: 700,
 };
 
 export const VIDEO_WIDTH = 1080;
 export const VIDEO_HEIGHT = 1920;
 
 export const layout = {
-  rowWidth: 900,
-  rowHeight: 72,
-  rowGap: 0,
+  rowWidth: 920,
+  rowHeight: 80,
   dividerHeight: 1,
-  circleSize: 200,
-  circleStrokeWidth: 2,
+  // Off-center positioning for hook
+  hookOffsetX: -80,
+  hookOffsetY: -100,
 };
 
 export const containerStyle: React.CSSProperties = {
