@@ -1,48 +1,48 @@
 import React from 'react';
 import { AbsoluteFill, Sequence } from 'remotion';
-import { Scene1Hero } from './components/Scene1Hero';
-import { Scene2Metrics } from './components/Scene2Metrics';
-import { Scene3ClearStage } from './components/Scene3ClearStage';
-import { Scene4Profiles } from './components/Scene4Profiles';
-import { Scene5Plan } from './components/Scene5Plan';
+import { Scene1Input } from './components/Scene1Input';
+import { Scene2Weighting } from './components/Scene2Weighting';
+import { Scene3Aggregation } from './components/Scene3Aggregation';
+import { Scene4Output } from './components/Scene4Output';
+import { Scene5CTA } from './components/Scene5CTA';
 import { colors } from './styles';
 
 // SwimScore Meta Video - Main Composition
-// Total Duration: 510 frames @ 30 FPS = 17 seconds
+// Total Duration: 210 frames @ 30 FPS = 7 seconds
 //
 // Scene Breakdown:
-// Scene 1: Hero Statement     (frames 0-50)      ~1.7s
-// Scene 2: What We Measure    (frames 50-130)    ~2.7s
-// Scene 3: Clear Stage        (frames 130-150)   ~0.7s
-// Scene 4: Profile Cards      (frames 150-330)   ~6s (3 profiles × 2s each)
-// Scene 5: Personalized Plans (frames 330-510)   ~6s (3 plans × 2s each)
+// Scene 1: Input - Your Signals    (frames 0-60)     2s
+// Scene 2: Weighting               (frames 60-105)   1.5s
+// Scene 3: Aggregation             (frames 105-150)  1.5s
+// Scene 4: Output - SwimScore      (frames 150-180)  1s
+// Scene 5: CTA                     (frames 180-210)  1s
 
 export const SwimScoreVideo: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: colors.background }}>
-      {/* Scene 1: Hero Statement */}
-      <Sequence from={0} durationInFrames={50}>
-        <Scene1Hero />
+      {/* Scene 1: Input - Your fertility signals */}
+      <Sequence from={0} durationInFrames={60}>
+        <Scene1Input />
       </Sequence>
 
-      {/* Scene 2: What We Measure - Metric Cards */}
-      <Sequence from={50} durationInFrames={80}>
-        <Scene2Metrics />
+      {/* Scene 2: Weighting - Not all signals weigh the same */}
+      <Sequence from={60} durationInFrames={45}>
+        <Scene2Weighting />
       </Sequence>
 
-      {/* Scene 3: Clear the Stage */}
-      <Sequence from={130} durationInFrames={20}>
-        <Scene3ClearStage />
+      {/* Scene 3: Aggregation - Signals combine into score */}
+      <Sequence from={105} durationInFrames={45}>
+        <Scene3Aggregation />
       </Sequence>
 
-      {/* Scene 4: Profile Baseball Cards (3 profiles × 60 frames = 180 frames) */}
-      <Sequence from={150} durationInFrames={180}>
-        <Scene4Profiles />
+      {/* Scene 4: Output - SwimScore reveal */}
+      <Sequence from={150} durationInFrames={30}>
+        <Scene4Output />
       </Sequence>
 
-      {/* Scene 5: Personalized Plans (3 plans × 60 frames = 180 frames) */}
-      <Sequence from={330} durationInFrames={180}>
-        <Scene5Plan />
+      {/* Scene 5: CTA - Get personalized plan */}
+      <Sequence from={180} durationInFrames={30}>
+        <Scene5CTA />
       </Sequence>
     </AbsoluteFill>
   );

@@ -5,7 +5,7 @@ import { SwimScoreVideo } from './SwimScoreVideo';
 // Video configuration
 // Resolution: 1080 × 1920 (9:16 portrait for mobile/social)
 // FPS: 30
-// Duration: 510 frames (~17 seconds)
+// Duration: 210 frames (7 seconds)
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="SwimScoreVideo"
         component={SwimScoreVideo}
-        durationInFrames={510}
+        durationInFrames={210}
         fps={30}
         width={1080}
         height={1920}
