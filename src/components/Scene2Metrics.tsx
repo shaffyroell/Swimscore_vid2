@@ -2,8 +2,8 @@ import React from 'react';
 import { useCurrentFrame, interpolate, Easing } from 'remotion';
 import { colors, typography, containerStyle, cardStyle, spacing } from '../styles';
 
-// Scene 2: What We Measure (Frames 45-105)
-// Cards animate in one-by-one showing metrics
+// Scene 2: What We Measure (Frames 0-90)
+// Large metric cards animate in one-by-one, centered
 
 const metrics = [
   'Total moving swimmers',
@@ -13,8 +13,8 @@ const metrics = [
   'Testosterone & hormones',
 ];
 
-const STAGGER_FRAMES = 8;
-const ANIMATION_DURATION = 15;
+const STAGGER_FRAMES = 10;
+const ANIMATION_DURATION = 18;
 
 interface MetricCardProps {
   text: string;
@@ -23,20 +23,27 @@ interface MetricCardProps {
 }
 
 const MetricCard: React.FC<MetricCardProps> = ({ text, index, frame }) => {
-  const startFrame = index * STAGGER_FRAMES;
+  const startFrame = 20 + index * STAGGER_FRAMES; // Start after header
 
   const opacity = interpolate(
     frame,
     [startFrame, startFrame + ANIMATION_DURATION],
     [0, 1],
-    { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.ease) }
+    { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic) }
   );
 
   const translateY = interpolate(
     frame,
     [startFrame, startFrame + ANIMATION_DURATION],
-    [12, 0],
-    { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.ease) }
+    [30, 0],
+    { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic) }
+  );
+
+  const scale = interpolate(
+    frame,
+    [startFrame, startFrame + ANIMATION_DURATION],
+    [0.95, 1],
+    { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic) }
   );
 
   return (
@@ -44,7 +51,7 @@ const MetricCard: React.FC<MetricCardProps> = ({ text, index, frame }) => {
       style={{
         ...cardStyle,
         opacity,
-        transform: `translateY(${translateY}px)`,
+        transform: `translateY(${translateY}px) scale(${scale})`,
         marginBottom: spacing.cardGap,
       }}
     >
@@ -57,27 +64,34 @@ export const Scene2Metrics: React.FC = () => {
   const frame = useCurrentFrame();
 
   // Header animation
-  const headerOpacity = interpolate(frame, [0, 15], [0, 1], {
+  const headerOpacity = interpolate(frame, [0, 20], [0, 1], {
     extrapolateRight: 'clamp',
-    easing: Easing.out(Easing.ease),
+    easing: Easing.out(Easing.cubic),
+  });
+
+  const headerTranslateY = interpolate(frame, [0, 20], [20, 0], {
+    extrapolateRight: 'clamp',
+    easing: Easing.out(Easing.cubic),
   });
 
   return (
-    <div style={{ ...containerStyle, justifyContent: 'flex-start', paddingTop: 80 }}>
+    <div style={{ ...containerStyle, justifyContent: 'flex-start', paddingTop: 160 }}>
       {/* Section header */}
       <p
         style={{
           color: colors.secondaryText,
           fontSize: typography.headerSize,
-          fontWeight: 500,
-          marginBottom: 24,
+          fontWeight: 600,
+          marginBottom: 48,
           opacity: headerOpacity,
+          transform: `translateY(${headerTranslateY}px)`,
+          letterSpacing: '-0.01em',
         }}
       >
         We measure what matters
       </p>
 
-      {/* Metric cards */}
+      {/* Metric cards - vertically stacked, centered */}
       <div
         style={{
           display: 'flex',
